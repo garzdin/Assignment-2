@@ -1,0 +1,25 @@
+{
+  "name": "assignment-2",
+  "version": "1.0.0",
+  "description": "A school project assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garzdin/Assignment-2.git"
+  },
+  "keywords": [
+    "node",
+    "monogo",
+    "rest",
+    "auth"
+  ],
+  "author": "Teodor Garzdin <teodorgarzedin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garzdin/Assignment-2/issues"
+  },
+  "homepage": "https://github.com/garzdin/Assignment-2#readme"
+}
