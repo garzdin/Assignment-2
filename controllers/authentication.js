@@ -46,8 +46,19 @@ var middleware = function(request, response, next) {
   };
 };
 
+var info = function(request, response) {
+  User.model.findById(request.user, function(error, user) {
+    if (error) return response.json({"message": error});
+    return response.json({
+      "email": user.email,
+      "registered_on": user.registered_on
+    });
+  });
+};
+
 module.exports = {
   register: register,
   login: login,
-  middleware: middleware
+  middleware: middleware,
+  info: info
 }

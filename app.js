@@ -24,6 +24,8 @@ app.post('/auth', controllers.authentication.login);
 
 app.use(controllers.authentication.middleware);
 
+app.get('/user', controllers.authentication.info);
+
 app.listen(process.env.PORT, function() {
   console.log("Application running on http://localhost:3000");
 });
