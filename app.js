@@ -14,7 +14,7 @@ mongoose.connect('mongodb://db:' + process.env.DB_PORT + '/app', function(error)
 });
 
 app.get('/', function(request, response) {
-  response.send({
+  response.json({
     "message": "Hello world from the API"
   });
 });
