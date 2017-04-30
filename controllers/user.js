@@ -2,13 +2,13 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 
 var createUser = function(request, response) {
-  if (!request.body.username || !request.body.password) {
+  if (!request.body.email || !request.body.password) {
     response.send({
-      "message": "Provide a username and a password"
+      "message": "Provide an email and a password"
     });
   } else {
     User.create({
-      username: request.body.username,
+      email: request.body.email,
       password: request.body.password
     }, function(error, user) {
       if (error) {
