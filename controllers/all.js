@@ -1,5 +1,5 @@
-var user = require('./user');
+var authentication = require('./authentication');
 
 module.exports = {
-  user: user
+  authentication: authentication
 }

@@ -19,10 +19,10 @@ app.get('/', function(request, response) {
   });
 });
 
-app.post('/user', controllers.user.register);
-app.post('/auth', controllers.user.login);
+app.post('/user', controllers.authentication.register);
+app.post('/auth', controllers.authentication.login);
 
-app.use(controllers.user.middleware);
+app.use(controllers.authentication.middleware);
 
 app.listen(process.env.PORT, function() {
   console.log("Application running on http://localhost:3000");
