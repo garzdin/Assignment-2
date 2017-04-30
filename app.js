@@ -1,6 +1,7 @@
 var app = require('express')();
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
+var controllers = require('./controllers/all');
 
 app.user(bodyParser.json());
 
@@ -13,8 +14,12 @@ mongoose.connect('mongodb://db:' + process.env.DB_PORT + '/app', function(error)
 });
 
 app.get('/', function(request, response) {
-  response.send("Hello world");
+  response.send({
+    "message": "Hello world from the API"
+  });
 });
+
+app.post('/user', controllers.user.createUser);
 
 app.listen(process.env.PORT, function() {
   console.log("Application running on http://localhost:3000");
