@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var controllers = require('./controllers/all');
 
-app.user(bodyParser.json());
+app.use(bodyParser.json());
 
 mongoose.connect('mongodb://db:' + process.env.DB_PORT + '/app', function(error) {
   if (error) {
