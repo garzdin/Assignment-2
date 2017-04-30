@@ -26,6 +26,11 @@ app.use(controllers.authentication.middleware);
 
 app.get('/user', controllers.authentication.info);
 
+app.post('/city', controllers.city.create);
+app.get('/city', controllers.city.all);
+app.get('/city/:id', controllers.city.one)
+app.get('/city/:id/weather', controllers.city.weather);
+
 app.listen(process.env.PORT, function() {
   console.log("Application running on http://localhost:3000");
 });
