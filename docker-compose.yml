@@ -1,5 +1,5 @@
 db:
-  image: mongo
+  image: mongo:latest
 web:
   build: .
   command: node app.js
@@ -12,3 +12,6 @@ web:
   environment:
     PORT: 3000
     DB_PORT: 27017
+    JWT_SECRET: ba7PXbg6Us7IWf3KhVst0eDz66Typwlz0d13vW2xmRuZuiWYVky6jwInLQPk6vl
+    CRYPTO_SALT: FeHuvKs1iMlMJSjC5PUVtk8Sy/ThNeHB64EJKivxmFyophIgNM1Ly8JwltBXB6ZEUgfC0dfKMTqpxAb3JHU+yFqdKaROR7b9WuiSHZIkQ/4NzaHu6ue8+P0x+iY9D1m7Z+bm3m6nsruerFfoKlWemwo1Zn9ENOAXOpwEddHY0LA=
+    CRYPTO_ITER: 12
