@@ -2,11 +2,6 @@ var jwt = require('jwt-simple');
 var User = require('../models/user');
 
 var register = function(request, response) {
-  if (!request.body.email || !request.body.password) {
-    return response.json({
-      "message": "Provide an email and a password"
-    });
-  }
   User.model.create({
     email: request.body.email,
     password: request.body.password
