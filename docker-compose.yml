@@ -1,6 +1,5 @@
 db:
   image: mongo
-  command: "--smallfiles --logpath=/dev/null"
 web:
   build: .
   command: node app.js
