@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt');
-var SALT_FACTOR = 10;
+var crypto = require('crypto');
+
+var salt = process.env.CRYPTO_SALT;
+var iterations = parseInt(process.env.CRYPTO_ITER);
 
 var Schema = new Schema({
   email:  {
@@ -9,7 +11,8 @@ var Schema = new Schema({
     required: true,
     index: {
       unique: true
-    }
+    },
+    match: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
   },
   password: {
     type: String,
@@ -22,25 +25,22 @@ var Schema = new Schema({
 });
 
 Schema.pre('save', function(next) {
-  var user = this;
-  if (!user.isModified('password')) return next();
-  bcrypt.genSalt(SALT_WORK_FACTOR, function(error, salt) {
+  if (!this.isModified('password')) return next();
+  crypto.pbkdf2(this.password, salt, iterations, 512, 'sha512', function(error, hash) {
     if (error) return next(error);
-    bcrypt.hash(user.password, salt, function(error, hash) {
-      if (error) return next(error);
-      user.password = hash;
-      next();
-    });
+    this.password = hash;
+    next();
   });
 });
 
 Schema.methods.comparePassword = function(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, function(error, isMatch) {
+  crypto.pbkdf2(candidatePassword, salt, iterations, 512, 'sha512', function(error, hash) {
     if (error) return callback(error);
-    callback(null, isMatch);
+    callback(null, hash == this.password);
   });
 };
 
-var User = mongoose.model('User', Schema);
-
-module.exports = User;
+module.exports = {
+  schema: Schema,
+  model: mongoose.model('User', Schema)
+};
