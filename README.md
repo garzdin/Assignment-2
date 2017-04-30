@@ -7,51 +7,51 @@ It uses data from DarkSky.
 Endpoints:
   - POST /user (create a user)
     - params:
-      email: String
-      password: String
+      - email: String
+      - password: String
     - response:
-      message: String
+      - message: String
   - POST /auth (login a user)
     - params:
-      email: String
-      password: String
+      - email: String
+      - password: String
     - response:
       - success:
-        token: String
+        - token: String
       - error:
-        message: String
+        - message: String
   - GET /user (get user info)
     - headers
-      token: String
+      - token: String
     - response:
-      email: String
-      registered_on: Date
+      - email: String
+      - registered_on: Date
   - POST /city (create a city)
     - headers
-      token: String
+      - token: String
     - params:
-      name: String,
-      latitude: Number
-      longitude: Number
+      - name: String,
+      - latitude: Number
+      - longitude: Number
     - response:
       - message
   - GET /city (list cities)
     - headers
-      token: String
+      - token: String
     - response:
-      name: String,
-      latitude: Number
-      longitude: Number
+      - name: String,
+      - latitude: Number
+      - longitude: Number
   - GET /city/:id (get a city)
     - headers
-      token: String
+      - token: String
     - response:
       array:
-        name: String,
-        latitude: Number
-        longitude: Number
+        - name: String,
+        - latitude: Number
+        - longitude: Number
   - GET /city/:id/weather (get a city's weather)
     - headers
-      token: String
+      - token: String
     - response:
-      object
+      - object
