@@ -1,7 +1,5 @@
 db:
   image: mongo
-  expose:
-    - "27017"
   command: "--smallfiles --logpath=/dev/null"
 web:
   build: .
