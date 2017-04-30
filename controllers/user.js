@@ -33,16 +33,18 @@ var login = function(request, response) {
 };
 
 var middleware = function(request, response, next) {
-  var token = request.body.token || request.get('Token') || request.query.token
+  var token = request.body.token || request.get('Token') || request.query.token;
   if (token) {
     if (jwt.decode(token, config.jwt_secret)) {
       request.user = jwt.decode(token, config.jwt_secret).user
       next()
-    }
+    } else {
+      return response.json({"message": "Invalid token provided"});
+    };
   } else {
-    return response.json({"message": "Invalid token"})
-  }
-}
+    return response.json({"message": "No token provided"});
+  };
+};
 
 module.exports = {
   register: register,
