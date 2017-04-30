@@ -1,5 +1,8 @@
 var app = require('express')();
+var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
+
+app.user(bodyParser.json());
 
 mongoose.connect('mongodb://db:' + process.env.DB_PORT + '/app', function(error) {
   if (error) {
