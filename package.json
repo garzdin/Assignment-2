@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/garzdin/Assignment-2#readme",
   "dependencies": {
+    "express": "^4.15.2",
     "mongoose": "^4.9.6"
   }
 }
